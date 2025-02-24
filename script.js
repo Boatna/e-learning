@@ -47,34 +47,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelector("#popup-content").appendChild(popupCloseBtn);
     }
-
-    // ✅ ตรวจสอบฟอร์มสมัครสมาชิก
-    let signupForm = document.querySelector("#signup-form");
-    if (signupForm) {
-        signupForm.addEventListener("submit", function (e) {
-            e.preventDefault(); // ป้องกันการรีเฟรชหน้า
-            let username = document.querySelector("#username").value;
-            let email = document.querySelector("#email").value;
-            let password = document.querySelector("#password").value;
-            let message = document.querySelector("#responseMessage");
-
-            if (username === "" || email === "" || password === "") {
-                message.innerText = "กรุณากรอกข้อมูลให้ครบถ้วน!";
-                message.style.color = "red";
-            } else {
-                message.innerText = "ลงทะเบียนสำเร็จ! 🎉";
-                message.style.color = "green";
-                signupForm.reset(); // ล้างค่าในฟอร์ม
-            }
-        });
-    }
-
-    // ✅ ปุ่ม Logout
-    let logoutButton = document.querySelector("#logoutButton");
-    if (logoutButton) {
-        logoutButton.addEventListener("click", function () {
-            alert("คุณได้ออกจากระบบแล้ว");
-            window.location.href = "index.html"; // กลับไปที่หน้าแรก
-        });
-    }
 });
