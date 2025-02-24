@@ -47,4 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelector("#popup-content").appendChild(popupCloseBtn);
     }
+    function toggleDropdown(categoryId) {
+        const dropdownContent = document.getElementById(categoryId);
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    }
 });
