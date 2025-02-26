@@ -148,8 +148,8 @@
         <h2>หลักสูตรที่เรามี</h2>
     
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('management', this)">หมวดหมู่: 🔧อบรมเกี่ยวกับเครื่องปรับอากาศ ▼</button>
-            <div class="dropdown-content" id="management">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training', this)">หมวดหมู่: 🔧อบรมเกี่ยวกับเครื่องปรับอากาศ ▼</button>
+            <div class="dropdown-content" id="aircon-training">
                 <div class="course-item">
                     <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
                     <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
@@ -172,8 +172,8 @@
         </div>
     
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('management', this)">หมวดหมู่: 🔧การอบรมเกี่ยวกับไฟฟ้า ▼</button>
-            <div class="dropdown-content" id="management">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training', this)">หมวดหมู่: 🔧อบรมเกี่ยวกับไฟฟ้า ▼</button>
+            <div class="dropdown-content" id="electricity-training">
                 <div class="course-item">
                     <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
                     <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
@@ -184,8 +184,8 @@
         </div>
     
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('management', this)">หมวดหมู่: 🔧การอบรมเกี่ยวกับ Kaizen▼</button>
-            <div class="dropdown-content" id="management">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training', this)">หมวดหมู่: 🔧อบรมเกี่ยวกับ Kaizen ▼</button>
+            <div class="dropdown-content" id="kaizen-training">
                 <div class="course-item">
                     <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
                     <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
@@ -196,8 +196,8 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('management', this)">หมวดหมู่: 🔧การอบรมเกี่ยวกับ 5 ส. ▼</button>
-            <div class="dropdown-content" id="management">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training', this)">หมวดหมู่: 🔧อบรมเกี่ยวกับ 5 ส. ▼</button>
+            <div class="dropdown-content" id="5s-training">
                 <div class="course-item">
                     <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
                     <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
@@ -208,8 +208,8 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropdown-button" onclick="toggleDropdown('management', this)">หมวดหมู่: 🔧หมวดหมู่อื่นๆ ▼</button>
-            <div class="dropdown-content" id="management">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training', this)">หมวดหมู่: 🔧อบรมอื่นๆ  ▼</button>
+            <div class="dropdown-content" id="about-training">
                 <div class="course-item">
                     <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
                     <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
@@ -227,17 +227,17 @@
         </div>
     </footer>
     <script src="script.js"></script>
-        <script>
-        function toggleDropdown(categoryId, button) {
-            const dropdownContent = document.getElementById(categoryId);
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
+    <script>
+        function toggleDropdown(id, button) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
                 button.innerHTML = button.innerHTML.replace("▲", "▼");
             } else {
-                dropdownContent.style.display = "block";
+                content.style.display = "block";
                 button.innerHTML = button.innerHTML.replace("▼", "▲");
             }
         }
-    </script>
+        </script>        
 </body>
 </html>
