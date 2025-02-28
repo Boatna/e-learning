@@ -60,22 +60,16 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Login Form -->
-        <h1>เข้าสู่ระบบ</h1>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
-            <input type="password" id="password" placeholder="รหัสผ่าน" required>
-            <button type="submit">เข้าสู่ระบบ</button>
-        </form>
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
 
-        <!-- User Info Section -->
-        <div id="userInfoSection" class="user-info" style="display: none;">
-            <p id="welcomeMessage"></p>
-            <button class="logout-btn" onclick="logout()">ออกจากระบบ</button>
-        </div>
-    </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
 
+        <button type="submit">Login</button>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>
