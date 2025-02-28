@@ -1,32 +1,53 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const userNameSpan = document.getElementById("user-name");
-    const authButton = document.getElementById("auth-button");
+// Check if user is logged in on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const storedUserName = localStorage.getItem('userName');
 
-    // ตรวจสอบสถานะผู้ใช้
-    let user = localStorage.getItem("user");
-
-    function updateUI() {
-        if (user) {
-            userNameSpan.textContent = user;
-            authButton.textContent = "Logout";
-        } else {
-            userNameSpan.textContent = "Guest";
-            authButton.textContent = "Login";
-        }
+    if (isLoggedIn === 'true' && storedUserName) {
+        showUserInfo(storedUserName);
     }
-
-    authButton.addEventListener("click", function () {
-        if (user) {
-            localStorage.removeItem("user");
-            user = null;
-        } else {
-            user = prompt("กรุณากรอกชื่อของคุณ:");
-            if (user) {
-                localStorage.setItem("user", user);
-            }
-        }
-        updateUI();
-    });
-
-    updateUI();
 });
+
+// Handle login form submission
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form from refreshing the page
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // Simple validation (replace with your own logic)
+    if (username === "admin" && password === "1234") {
+        // Save login status and username to localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', username);
+
+        // Show user info
+        showUserInfo(username);
+    } else {
+        alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+    }
+});
+
+// Show user info and hide login form
+function showUserInfo(username) {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('userInfoSection').style.display = 'block';
+    document.getElementById('welcomeMessage').textContent = `สวัสดี, ${username}`;
+}
+
+// Logout function
+function logout() {
+    // Remove login status and username from localStorage
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userName');
+
+    // Reset UI
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('userInfoSection').style.display = 'none';
+
+    // Clear form fields
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+
+    alert("คุณได้ออกจากระบบแล้ว");
+}
