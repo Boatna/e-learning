@@ -5,14 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>e-Learning สำหรับอบรมพนักงาน</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #003d80;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+        .download-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 15px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container header-container">
+        <div class="header-container">
             <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
-            <h1>เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h1>
+            <h1 style="font-size: 1.5rem;">เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">หน้าแรก</a></li>
@@ -23,7 +119,6 @@
             </nav>
         </div>
     </header>
-
     <main>
         <section id="introduction">
             <div class="container">
@@ -31,7 +126,6 @@
                 <p>ระบบปรับอากาศโซลาร์ไฮบริดเป็นเทคโนโลยีที่ช่วยประหยัดพลังงานไฟฟ้าด้วยการใช้พลังงานแสงอาทิตย์ร่วมกับไฟฟ้าปกติ ซึ่งเหมาะสำหรับการติดตั้งในบ้านพักอาศัยและอาคารสำนักงาน</p>
             </div>
         </section>
-
         <section id="solar-system">
             <div class="container">
                 <h2>ระบบพลังงานแสงอาทิตย์</h2>
@@ -42,7 +136,6 @@
                 </ul>
             </div>
         </section>
-
         <section id="cost-analysis">
             <div class="container">
                 <h2>การคำนวณต้นทุนและจุดคุ้มทุน</h2>
@@ -56,24 +149,19 @@
                 <p>จุดคุ้มทุนเมื่อประหยัดค่าไฟฟ้าได้ปีละประมาณ 4,176 บาท</p>
             </div>
         </section>
-
         <section id="installation-guide">
             <div class="container">
                 <h2>แนวทางการติดตั้งแผงโซลาร์เซลล์</h2>
                 <p>แผงโซลาร์เซลล์ควรติดตั้งในตำแหน่งที่ได้รับแสงแดดสูงสุด เช่น ทิศใต้ และต้องมีการตรวจสอบความแข็งแรงโดยวิศวกรโยธา</p>
-            </div>
                 <a href="assets/แอร์โซลาร์ v3.1.pdf" download class="download-button">ดาวน์โหลดข้อมูลเพิ่มเติม (PDF)</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd41ewfcRYnqKFk_17-xNZA6m1EVZ09kjmFu7dPwRV-WEP5TQ/viewform?usp=preview" class="btn" target="_blank">เริ่มทดสอบ</a>
-            </div>            
-            <br>
+            </div>
         </section>
     </main>
-
     <footer>
         <div class="container footer-container">
             <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
         </div>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>
