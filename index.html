@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Learning สำหรับอบรมพนักงาน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #003d80;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        .courses {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .course {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .course h3 {
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        .course p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .btn-secondary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 15px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
+            <h1 style="font-size: 1.5rem;">e-Learning สำหรับอบรมพนักงาน</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="course.html">หลักสูตร</a></li>
+                    <li><a href="new.html">ข่าวสาร</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <h2>ยินดีต้อนรับสู่ระบบอบรมออนไลน์</h2>
+            <p>พัฒนาความรู้และทักษะกับหลักสูตรคุณภาพที่คุณสามารถเลือกเรียนได้ทุกที่ทุกเวลา</p>
+            <a href="course.html" class="btn btn-primary">ดูหลักสูตร</a>
+        </div>
+    </section>
+
+    <section class="courses">
+        <div class="container">
+            <h2>หลักสูตรที่เปิดสอน</h2>
+            <div class="course-grid">
+                <div class="course">
+                    <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
+                    <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
+                    <a href="courses1.html" class="btn btn-secondary">ดูรายละเอียด</a>
+                </div>
+                <div class="course">
+                    <h3>หลักสูตร 2: การบริหารเวลา</h3>
+                    <p>เพิ่มประสิทธิภาพการทำงานด้วยเทคนิคการจัดการเวลา</p>
+                    <a href="courses2.html" class="btn btn-secondary">ดูรายละเอียด</a>
+                </div>
+                <div class="course">
+                    <h3>หลักสูตร 3: การใช้เครื่องมือสำหรับการทำงานร่วมกัน</h3>
+                    <p>เรียนรู้การใช้ซอฟต์แวร์และเครื่องมือดิจิทัลเพื่อเพิ่มประสิทธิภาพในการทำงานเป็นทีม</p>
+                    <a href="courses3.html" class="btn btn-secondary">ดูรายละเอียด</a>
+                </div>
+                <div class="course">
+                    <h3>หลักสูตร 4: เทคนิคการสื่อสารในองค์กร</h3>
+                    <p>พัฒนาทักษะการสื่อสารเพื่อเพิ่มประสิทธิภาพในการทำงานและการทำงานร่วมกับผู้อื่น</p>
+                    <a href="courses4.html" class="btn btn-secondary">ดูรายละเอียด</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+        </div>
+    </footer>
+</body>
+</html>
