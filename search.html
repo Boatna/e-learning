@@ -82,12 +82,24 @@
         tr:hover {
             background-color: #e6f7ff;
         }
+        .form-link-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .form-link-btn:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="assets\Bitwise-BW.png" alt="Logo">
+        <img src="https://via.placeholder.com/100" alt="Logo">
         <h2>ค้นหาข้อมูลพนักงาน</h2>
     </header>
 
@@ -110,7 +122,7 @@
                     <th>ชื่อ-นามสกุล</th>
                     <th>แผนก/ฝ่าย</th>
                     <th>Plat</th>
-                    <th>ลิงค์ Microsoft Form</th>
+                    <th>ลงทะเบียน</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -144,7 +156,7 @@
                     <td>${row["ชื่อ-นามสกุล"] || '-'}</td>
                     <td>${row["แผนก/ฝ่าย"] || '-'}</td>
                     <td>${row["Plat"] || '-'}</td>
-                    <td><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=YourFormIDHere&employee_id=${row["รหัสพนักงาน"]}" target="_blank">ไปยัง Microsoft Form</a></td>
+                    <td><button class="form-link-btn" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUNFk0TklLU1FPWEMySktZQk40WTgyQVJIWi4u', '_blank')">ไปยัง Microsoft Form</button></td>
                 `;
                 tableBody.appendChild(tr);
             });
