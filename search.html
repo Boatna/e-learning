@@ -1,35 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Search System</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <title>ระบบค้นหาข้อมูลพนักงาน</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'TH Sarabun', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e6f7ff;
+            background-color: #f9f9f9;
             color: #333;
         }
-        .header {
-            text-align: center;
-            background-color: #0074d9;
-            color: white;
-            padding: 20px 0;
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
         }
-        .header img {
-            width: 100px;
-            margin-bottom: 10px;
+        .language-toggle {
+            font-size: 20px;
+        }
+        #language-dropdown {
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        #language-dropdown button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        #language-dropdown button:hover {
+            background-color: #f0f0f0;
+        }
+        .hidden {
+            display: none;
         }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 600px;
+            margin: 50px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo img {
+            max-width: 150px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         input, button {
             width: 100%;
@@ -40,7 +70,7 @@
             border-radius: 4px;
         }
         button {
-            background-color: #0074d9;
+            background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
@@ -48,111 +78,116 @@
         button:hover {
             background-color: #0056b3;
         }
-        table {
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
         }
-        table, th, td {
-            border: 1px solid #ddd;
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
         }
-        th {
-            background-color: #f4f4f4;
+        #loading-spinner {
+            text-align: center;
+            padding: 20px;
         }
-        .footer {
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+        footer {
             text-align: center;
             margin-top: 20px;
-            color: #0074d9;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
         }
-    </style>
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        </style>
+    <link href="https://fonts.googleapis.com/css2?family=TH+Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <img src="https://via.placeholder.com/100x100.png?text=LOGO" alt="Logo">
-        <h1>Search Names from Preloaded Data</h1>
-    </div>
+    <div class="language-switcher">
+        <!-- ไอคอนรูปโลก -->
+        <span id="language-icon" class="language-toggle">🌍</span>
+        <!-- Dropdown menu ภาษา -->
+        <div id="language-dropdown" class="hidden">
+            <button data-lang="th">ไทย</button>
+            <button data-lang="en">English</button>
+            <button data-lang="mm">မြန်မာ</button>
+        </div>
+    </div>    
     <div class="container">
-        <input type="text" id="searchInput" placeholder="Enter name to search..." />
-        <button onclick="searchData()">Search</button>
+        <div class="logo logo2">
+            <img src="Bitwise-BW.png" alt="Logo 2">
+        </div>
+        <br>
+        <h1 id="main-title">กรุณากรอกข้อมูลที่ต้องการค้นหา</h1>
+        <input type="text" id="query" placeholder="กรอกข้อมูลค้นหา เช่น รหัสพนักงาน" />
+        <button id="search-btn">ค้นหา</button>
 
-        <table id="dataTable">
-            <thead>
-                <tr>
-                    <!-- Headers will be dynamically populated -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data rows will be dynamically populated -->
-            </tbody>
-        </table>
+        <!-- Pop-up Container -->
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <span id="popup-close" class="popup-close">&times;</span>
+                <h2 id="popup-title"></h2>
+                <div id="popup-message"></div>
+            </div>
+        </div>
+
+        <!-- Loading spinner -->
+        <div id="loading-spinner" class="hidden">
+            <p>กำลังโหลดข้อมูล...</p>
+        </div>  
+
+        <!-- Search result display area -->
+        <textarea id="result" readonly></textarea>
+        
+        <!-- Error message -->
+        <p id="error-message" class="error"></p>
     </div>
-    <div class="footer">
-        &copy; 2023 Preloaded Data Search System. All rights reserved.
-    </div>
 
-    <script>
-        // Preloaded data (example Excel-like data)
-        const excelData = [
-            ["ID", "Name", "Email", "Department"],
-            [1, "John Doe", "john.doe@example.com", "Engineering"],
-            [2, "Jane Smith", "jane.smith@example.com", "Marketing"],
-            [3, "Alice Johnson", "alice.johnson@example.com", "Sales"],
-            [4, "Bob Brown", "bob.brown@example.com", "HR"]
-        ];
-
-        window.onload = function() {
-            populateTable(excelData);
-        };
-
-        function populateTable(data) {
-            const table = document.getElementById('dataTable');
-            table.innerHTML = ''; // Clear previous data
-
-            const thead = document.createElement('thead');
-            const tbody = document.createElement('tbody');
-
-            // Populate headers
-            const headerRow = document.createElement('tr');
-            data[0].forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                headerRow.appendChild(th);
-            });
-            thead.appendChild(headerRow);
-
-            // Populate rows
-            for (let i = 1; i < data.length; i++) {
-                const row = document.createElement('tr');
-                data[i].forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell;
-                    row.appendChild(td);
-                });
-                tbody.appendChild(row);
-            }
-
-            table.appendChild(thead);
-            table.appendChild(tbody);
-        }
-
-        function searchData() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            if (!searchTerm) {
-                populateTable(excelData); // Reset to full data if search term is empty
-                return;
-            }
-
-            const filteredData = excelData.filter((row, index) => {
-                if (index === 0) return true; // Always include headers
-                return row.some(cell => String(cell).toLowerCase().includes(searchTerm));
-            });
-
-            populateTable(filteredData);
-        }
-    </script>
+    <footer>
+        <p>
+            <span id="footer-text"></span> 
+            | <a id="contact-link" href="contact.html">ติดต่อเรา</a>
+        </p>
+    </footer>
+    
+    <!-- External Scripts -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
