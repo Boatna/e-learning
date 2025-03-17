@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Learning สำหรับอบรมพนักงาน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #003d80;
+        }
+        #courses {
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown-button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dropdown-button:hover {
+            background-color: #003d80;
+        }
+        .dropdown-content {
+            display: none;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .course-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .course-item:last-child {
+            border-bottom: none;
+        }
+        .course-item h3 {
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+        .course-item p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 15px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
+            <h1 style="font-size: 1.5rem;">e-Learning สำหรับอบรมพนักงาน</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="course.html">หลักสูตร</a></li>
+                    <li><a href="new.html">ข่าวสาร</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="courses">
+        <h2>หลักสูตรที่เรามี</h2>
+
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown('aircon-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับเครื่องปรับอากาศ ▼</button>
+            <div class="dropdown-content" id="aircon-training">
+                <div class="course-item">
+                    <h3>หลักสูตร 1: เครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</h3>
+                    <p>เรียนรู้พื้นฐาน การติดตั้งแผงโซล่าเซลล์และประสิทธิภาพเครื่องปรับอากาศโซลาร์ไฮบริด TASAKI</p>
+                    <a href="courses1.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+                    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUNFk0TklLU1FPWEMySktZQk40WTgyQVJIWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
+                </div>
+                <div class="course-item">
+                    <h3>หลักสูตร 2: วิธีทำหมูกรอบ</h3>
+                    <p>เรียนรู้เทคนิคการทำหมูกรอบให้กรอบนอกนุ่มใน</p>
+                    <a href="courses2.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+                    <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown('electricity-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับไฟฟ้า ▼</button>
+            <div class="dropdown-content" id="electricity-training">
+                <div class="course-item">
+                    <h3>หลักสูตร 1: พื้นฐานระบบไฟฟ้า</h3>
+                    <p>เรียนรู้พื้นฐานการติดตั้งและบำรุงรักษาระบบไฟฟ้า</p>
+                    <a href="courses3.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+                    <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown('kaizen-training')">หมวดหมู่: 🔧อบรมเกี่ยวกับ Kaizen ▼</button>
+            <div class="dropdown-content" id="kaizen-training">
+                <div class="course-item">
+                    <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
+                    <p>เรียนรู้แนวคิดและวิธีการปรับปรุงงานอย่างต่อเนื่อง</p>
+                    <a href="courses4.html" class="btn">ดูรายละเอียดหลักสูตร</a>
+                    <a href="#" class="btn" target="_blank">เริ่มทดสอบ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+    </footer>
+    <script>
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            const button = document.querySelector(`[onclick="toggleDropdown('${id}')"]`);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.innerHTML = button.innerHTML.replace("▲", "▼");
+            } else {
+                content.style.display = "block";
+                button.innerHTML = button.innerHTML.replace("▼", "▲");
+            }
+        }
+    </script>
+</body>
+</html>

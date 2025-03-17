@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ค้นหาข้อมูลพนักงาน</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #0074d9;
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0074d9;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+        .form-link-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .form-link-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets\Bitwise-BW.png" alt="Logo">
+        <h2>ค้นหาข้อมูลพนักงาน</h2>
+    </header>
+
+    <div class="container">
+
+        <select id="searchColumn">
+            <option value="รหัสพนักงาน">รหัสพนักงาน</option>
+            <option value="ชื่อ-นามสกุล">ชื่อ-นามสกุล</option>
+            <option value="แผนก/ฝ่าย">แผนก/ฝ่าย</option>
+            <option value="Plat">Plat</option>
+        </select>
+        
+        <input type="text" id="searchInput" placeholder="กรอกคำค้นหา">
+        <button onclick="searchData()">ค้นหา</button>
+
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>รหัสพนักงาน</th>
+                    <th>ชื่อ-นามสกุล</th>
+                    <th>แผนก/ฝ่าย</th>
+                    <th>Plat</th>
+                    <th>ลงทะเบียน</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+
+    <script>
+        let employeeData = []; // ตัวแปรเก็บข้อมูลจาก Excel
+
+        // โหลดข้อมูลจากไฟล์ Excel ที่อยู่บนเซิร์ฟเวอร์
+        fetch('employee-data.xlsx')
+            .then(response => response.arrayBuffer())
+            .then(data => {
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheetName = workbook.SheetNames[0]; // ชื่อชีตแรก
+                const sheet = workbook.Sheets[sheetName];
+                employeeData = XLSX.utils.sheet_to_json(sheet); // แปลงข้อมูลเป็น JSON
+
+                displayData(employeeData); // แสดงข้อมูลในตาราง
+            });
+
+        // แสดงข้อมูลทั้งหมดในตาราง
+        function displayData(data) {
+            const tableBody = document.querySelector("#dataTable tbody");
+            tableBody.innerHTML = ""; // ล้างข้อมูลเก่า
+            data.forEach(row => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = ` 
+                    <td>${row["รหัสพนักงาน"] || '-'}</td>
+                    <td>${row["ชื่อ-นามสกุล"] || '-'}</td>
+                    <td>${row["แผนก/ฝ่าย"] || '-'}</td>
+                    <td>${row["Plat"] || '-'}</td>
+                    <td><button class="form-link-btn" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUNFk0TklLU1FPWEMySktZQk40WTgyQVJIWi4u', '_blank')">ลงทะเบียนเข้ารับการทดสอบ</button></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // ฟังก์ชันค้นหาข้อมูล
+        function searchData() {
+            const keyword = document.getElementById("searchInput").value.trim().toLowerCase();  // เปลี่ยนคำค้นหาเป็นตัวพิมพ์เล็ก
+            const column = document.getElementById("searchColumn").value;
+
+            // ฟิลเตอร์ข้อมูลตามคำค้นหา
+            const filteredData = employeeData.filter(row =>
+                row[column] && row[column].toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(keyword)
+            );
+
+            displayData(filteredData); // แสดงเฉพาะผลลัพธ์ที่ค้นหา
+        }
+    </script>
+
+</body>
+</html>
