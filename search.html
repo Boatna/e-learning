@@ -87,7 +87,7 @@
 <body>
 
     <header>
-        <img src="https://via.placeholder.com/100" alt="Logo">
+        <img src="assets\Bitwise-BW.png" alt="Logo">
         <h2>ค้นหาข้อมูลพนักงาน</h2>
     </header>
 
@@ -110,6 +110,7 @@
                     <th>ชื่อ-นามสกุล</th>
                     <th>แผนก/ฝ่าย</th>
                     <th>Plat</th>
+                    <th>ลิงค์ Microsoft Form</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -143,6 +144,7 @@
                     <td>${row["ชื่อ-นามสกุล"] || '-'}</td>
                     <td>${row["แผนก/ฝ่าย"] || '-'}</td>
                     <td>${row["Plat"] || '-'}</td>
+                    <td><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=YourFormIDHere&employee_id=${row["รหัสพนักงาน"]}" target="_blank">ไปยัง Microsoft Form</a></td>
                 `;
                 tableBody.appendChild(tr);
             });
