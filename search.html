@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Search System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7ff;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            background-color: #0074d9;
+            color: white;
+            padding: 20px 0;
+        }
+        .header img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #0074d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://via.placeholder.com/100x100.png?text=LOGO" alt="Logo">
+        <h1>Search Names from Preloaded Data</h1>
+    </div>
+    <div class="container">
+        <input type="text" id="searchInput" placeholder="Enter name to search..." />
+        <button onclick="searchData()">Search</button>
+
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <!-- Headers will be dynamically populated -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+    <div class="footer">
+        &copy; 2023 Preloaded Data Search System. All rights reserved.
+    </div>
+
+    <script>
+        // Preloaded data (example Excel-like data)
+        const excelData = [
+            ["ID", "Name", "Email", "Department"],
+            [1, "John Doe", "john.doe@example.com", "Engineering"],
+            [2, "Jane Smith", "jane.smith@example.com", "Marketing"],
+            [3, "Alice Johnson", "alice.johnson@example.com", "Sales"],
+            [4, "Bob Brown", "bob.brown@example.com", "HR"]
+        ];
+
+        window.onload = function() {
+            populateTable(excelData);
+        };
+
+        function populateTable(data) {
+            const table = document.getElementById('dataTable');
+            table.innerHTML = ''; // Clear previous data
+
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+
+            // Populate headers
+            const headerRow = document.createElement('tr');
+            data[0].forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+
+            // Populate rows
+            for (let i = 1; i < data.length; i++) {
+                const row = document.createElement('tr');
+                data[i].forEach(cell => {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
+                    row.appendChild(td);
+                });
+                tbody.appendChild(row);
+            }
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+        }
+
+        function searchData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (!searchTerm) {
+                populateTable(excelData); // Reset to full data if search term is empty
+                return;
+            }
+
+            const filteredData = excelData.filter((row, index) => {
+                if (index === 0) return true; // Always include headers
+                return row.some(cell => String(cell).toLowerCase().includes(searchTerm));
+            });
+
+            populateTable(filteredData);
+        }
+    </script>
+</body>
+</html>
