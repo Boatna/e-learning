@@ -3,191 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบค้นหาข้อมูลพนักงาน</title>
+    <title>ค้นหาข้อมูลพนักงาน</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
-        body {
-            font-family: 'TH Sarabun', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .language-switcher {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .language-toggle {
-            font-size: 20px;
-        }
-        #language-dropdown {
-            position: absolute;
-            top: 30px;
-            right: 0;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-        #language-dropdown button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            text-align: left;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-        }
-        #language-dropdown button:hover {
-            background-color: #f0f0f0;
-        }
-        .hidden {
-            display: none;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .logo img {
-            max-width: 150px;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        input, button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        .popup-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-        }
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        #loading-spinner {
-            text-align: center;
-            padding: 20px;
-        }
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: none;
-        }
-        .error {
-            color: red;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=TH+Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input, select, button { margin: 5px; padding: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
 </head>
 <body>
-    <div class="language-switcher">
-        <!-- ไอคอนรูปโลก -->
-        <span id="language-icon" class="language-toggle">🌍</span>
-        <!-- Dropdown menu ภาษา -->
-        <div id="language-dropdown" class="hidden">
-            <button data-lang="th">ไทย</button>
-            <button data-lang="en">English</button>
-            <button data-lang="mm">မြန်မာ</button>
-        </div>
-    </div>    
-    <div class="container">
-        <div class="logo logo2">
-            <img src="Bitwise-BW.png" alt="Logo 2">
-        </div>
-        <br>
-        <h1 id="main-title">กรุณากรอกข้อมูลที่ต้องการค้นหา</h1>
-        <input type="text" id="query" placeholder="กรอกข้อมูลค้นหา เช่น รหัสพนักงาน" />
-        <button id="search-btn">ค้นหา</button>
 
-        <!-- Pop-up Container -->
-        <div id="popup" class="popup hidden">
-            <div class="popup-content">
-                <span id="popup-close" class="popup-close">&times;</span>
-                <h2 id="popup-title"></h2>
-                <div id="popup-message"></div>
-            </div>
-        </div>
+    <h2>ค้นหาข้อมูลพนักงาน</h2>
 
-        <!-- Loading spinner -->
-        <div id="loading-spinner" class="hidden">
-            <p>กำลังโหลดข้อมูล...</p>
-        </div>  
-
-        <!-- Search result display area -->
-        <textarea id="result" readonly></textarea>
-        
-        <!-- Error message -->
-        <p id="error-message" class="error"></p>
-    </div>
-
-    <footer>
-        <p>
-            <span id="footer-text"></span> 
-            | <a id="contact-link" href="contact.html">ติดต่อเรา</a>
-        </p>
-    </footer>
+    <select id="searchColumn">
+        <option value="รหัสพนักงาน">รหัสพนักงาน</option>
+        <option value="ชื่อ-นามสกุล">ชื่อ-นามสกุล</option>
+        <option value="แผนก/ฝ่าย">แผนก/ฝ่าย</option>
+        <option value="Plat">Plat</option>
+    </select>
     
-    <!-- External Scripts -->
-    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
+    <input type="text" id="searchInput" placeholder="กรอกคำค้นหา">
+    <button onclick="searchData()">ค้นหา</button>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>รหัสพนักงาน</th>
+                <th>ชื่อ-นามสกุล</th>
+                <th>แผนก/ฝ่าย</th>
+                <th>Plat</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let employeeData = []; // ตัวแปรเก็บข้อมูลจาก Excel
+
+        // โหลดข้อมูลจากไฟล์ Excel ที่อยู่บนเซิร์ฟเวอร์
+        fetch('employee-data.xlsx')
+            .then(response => response.arrayBuffer())
+            .then(data => {
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheetName = workbook.SheetNames[0]; // ชื่อชีตแรก
+                const sheet = workbook.Sheets[sheetName];
+                employeeData = XLSX.utils.sheet_to_json(sheet); // แปลงข้อมูลเป็น JSON
+
+                displayData(employeeData); // แสดงข้อมูลในตาราง
+            });
+
+        // แสดงข้อมูลทั้งหมดในตาราง
+        function displayData(data) {
+            const tableBody = document.querySelector("#dataTable tbody");
+            tableBody.innerHTML = ""; // ล้างข้อมูลเก่า
+            data.forEach(row => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${row["รหัสพนักงาน"] || '-'}</td>
+                    <td>${row["ชื่อ-นามสกุล"] || '-'}</td>
+                    <td>${row["แผนก/ฝ่าย"] || '-'}</td>
+                    <td>${row["Plat"] || '-'}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // ฟังก์ชันค้นหาข้อมูล
+        function searchData() {
+            const keyword = document.getElementById("searchInput").value.trim().toLowerCase();
+            const column = document.getElementById("searchColumn").value;
+
+            const filteredData = employeeData.filter(row =>
+                row[column] && row[column].toString().toLowerCase().includes(keyword)
+            );
+
+            displayData(filteredData); // แสดงเฉพาะผลลัพธ์ที่ค้นหา
+        }
+    </script>
+
 </body>
 </html>
