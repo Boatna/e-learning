@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Learning สำหรับอบรมพนักงาน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #003d80;
+        }
+        .footer-container {
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .footer-container a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .footer-container a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 1.5rem;
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+        .section p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .section table th,
+        .section table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .section table th {
+            background-color: #0056b3;
+            color: white;
+        }
+        .section table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn, .download-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover, .download-button:hover {
+            background-color: #003d80;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center; /* จัดให้อยู่กึ่งกลาง */
+            gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+            flex-wrap: wrap; /* ขึ้นบรรทัดใหม่หากพื้นที่ไม่พอ */
+            margin-top: 30px;
+        }
+        /* Responsive Design */
+        @media (max-width: 680px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
+            <h1 style="font-size: 1.5rem;">e-Learning สำหรับอบรมพนักงาน</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="course.html">หลักสูตร</a></li>
+                    <li><a href="new.html">ข่าวสาร</a></li>
+                    <li><a href="contact.html">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="section">
+        <h2>5ส (5S) คืออะไร?</h2>
+        <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น ได้แก่:</p>
+        <ul>
+            <li><strong>สะสาง (Seiri)</strong> – แยกของที่จำเป็นกับไม่จำเป็น</li>
+            <li><strong>สะดวก (Seiton)</strong> – จัดวางสิ่งของให้ค้นหาและใช้งานได้ง่าย</li>
+            <li><strong>สะอาด (Seiso)</strong> – ทำความสะอาดสถานที่และอุปกรณ์</li>
+            <li><strong>สร้างมาตรฐาน (Seiketsu)</strong> – รักษาความเป็นระเบียบให้คงอยู่</li>
+            <li><strong>สร้างวินัย (Shitsuke)</strong> – ปลูกฝังวินัยในการปฏิบัติอย่างต่อเนื่อง</li>
+        </ul>
+        <p>🛠️ <strong>5ส = เครื่องมือ + ระบบ + กิจกรรม</strong> ที่ผสานกันเพื่อสร้าง "คุณภาพชีวิตและประสิทธิภาพการทำงาน"</p>
+    </div>
+
+    <div class="section">
+        <h2>ทำไมต้องทำ 5ส?</h2>
+        <p>เหตุผลหลัก:</p>
+        <ul>
+            <li>เพื่อป้องกันอุบัติเหตุ – ลดสิ่งกีดขวาง และความไม่เป็นระเบียบ</li>
+            <li>เพื่อความสะดวกในการทำงาน – เข้าถึงอุปกรณ์ง่าย ค้นหาของไว</li>
+            <li>เพื่อเพิ่มประสิทธิภาพการทำงาน – ลดเวลา ลดความสูญเปล่า</li>
+            <li>เพื่อใช้ทรัพยากรอย่างคุ้มค่า – ลดต้นทุนโดยใช้แต่ของจำเป็น</li>
+            <li>เพื่อสร้างบรรยากาศที่ดี – สภาพแวดล้อมสะอาดและปลอดภัย</li>
+            <li>เพื่อสร้างวินัยและความภาคภูมิใจ – ส่งเสริมให้ทุกคนมีส่วนร่วมและรู้สึกเป็นเจ้าของ</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>ประโยชน์ที่องค์กรจะได้รับจากระบบ 5ส</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ด้าน</th>
+                    <th>ประโยชน์</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P – Productivity</td>
+                    <td>ปริมาณงานเพิ่มขึ้น</td>
+                </tr>
+                <tr>
+                    <td>Q – Quality</td>
+                    <td>คุณภาพงานดีขึ้น</td>
+                </tr>
+                <tr>
+                    <td>C – Cost</td>
+                    <td>ลดค่าใช้จ่ายไม่จำเป็น</td>
+                </tr>
+                <tr>
+                    <td>D – Delivery</td>
+                    <td>ส่งมอบงานได้รวดเร็วขึ้น</td>
+                </tr>
+                <tr>
+                    <td>S – Safety</td>
+                    <td>ความปลอดภัยในพื้นที่ทำงาน</td>
+                </tr>
+                <tr>
+                    <td>M – Morale</td>
+                    <td>ขวัญและกำลังใจของพนักงานดีขึ้น</td>
+                </tr>
+                <tr>
+                    <td>E – Environment</td>
+                    <td>สิ่งแวดล้อมดีขึ้น ลดโลกร้อน</td>
+                </tr>
+                <tr>
+                    <td>E – Ethic</td>
+                    <td>จรรยาบรรณ และคุณธรรมเพิ่มขึ้น</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="action-buttons">
+        <a href="search.html" class="btn" target="_blank">ค้นหารายชื่อเพื่อลงทะเบียน</a>
+        <a href="หลักสูตร5สขั้นพื้นฐาน 2025 (19-03-25).pdf" download class="download-button">เอกสารหลักสูตรการอบรม</a>
+        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BN4eh6eA4US_NSW39l_KrqEil6o0lKlBqm1zZ7rjlCFUNFk0TklLU1FPWEMySktZQk40WTgyQVJIWi4u" class="btn" target="_blank">เริ่มทดสอบ</a>
+    </div>
+
+    <div class="footer-container">
+        <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
+    </div>
+    <!-- โหลดไลบรารี SheetJS -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <!-- ไฟล์ JavaScript ของคุณ -->
+    <script>
+        
+    </script>
+</body>
+</html>
