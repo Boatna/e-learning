@@ -47,7 +47,7 @@
             transition: background-color 0.3s;
         }
         nav ul li a:hover {
-            background-color: #0077ff;
+            background-color: #0056b3;
         }
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hero-bg.jpg') no-repeat center center/cover;
@@ -107,7 +107,7 @@
             color: white;
         }
         .btn-secondary:hover {
-            background-color: #0077ff;
+            background-color: #0056b3;
         }
         footer {
             background-color: #f8f9fa;
@@ -122,20 +122,41 @@
         footer a:hover {
             text-decoration: underline;
         }
-        /* Responsive Design */
-        @media (max-width: 680px) {
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
             }
+            .header-container h1 {
+                font-size: 1rem;
+            }
             .hero h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .hero p {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             nav ul {
+                flex-direction: row;
+                flex-wrap: wrap;
                 justify-content: center;
+                gap: 10px;
+            }
+            nav ul li a {
+                width: auto;
+                text-align: center;
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            .course h3 {
+                font-size: 1.2rem;
+            }
+            .course p {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -174,7 +195,7 @@
                     <a href="courses1.html" class="btn btn-secondary">ดูรายละเอียด</a>
                 </div>
                 <div class="course">
-                    <h3> หลักสูตร 1: แนวคิดและวิธีการปฏิบัติตาม 5ส. </h3>
+                    <h3>หลักสูตร 2: แนวคิดและวิธีการปฏิบัติตาม 5ส.</h3>
                     <p>5ส (5S) คือ เครื่องมือพื้นฐานในการจัดระเบียบสถานที่ทำงานอย่างมีประสิทธิภาพและปลอดภัย ซึ่งประกอบด้วย 5 ขั้นตอนจากภาษาญี่ปุ่น</p>
                     <a href="courses5.html" class="btn btn-secondary">ดูรายละเอียด</a>
                 </div>
@@ -184,7 +205,7 @@
                     <a href="courses3.html" class="btn btn-secondary">ดูรายละเอียด</a>
                 </div>
                 <div class="course">
-                    <h3>หลักสูตร 1: การปรับปรุงงานแบบ Kaizen</h3>
+                    <h3>หลักสูตร 4: การปรับปรุงงานแบบ Kaizen</h3>
                     <p>พัฒนาทักษะการสื่อสารเพื่อเพิ่มประสิทธิภาพในการทำงานและการทำงานร่วมกับผู้อื่น</p>
                     <a href="courses4.html" class="btn btn-secondary">ดูรายละเอียด</a>
                 </div>
