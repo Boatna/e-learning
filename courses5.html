@@ -18,7 +18,7 @@
             color: #333;
         }
         header {
-            background-color: #0077ff;
+            background: linear-gradient(135deg, #0077ff, #00bfff);
             color: white;
             padding: 20px 0;
         }
@@ -36,47 +36,56 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 0.9rem;
             padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            background-color: #0077ff;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
         .footer-container {
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             color: #212529;
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
         .footer-container a {
             color: #0077ff;
             text-decoration: none;
+            transition: color 0.3s;
         }
         .footer-container a:hover {
-            text-decoration: underline;
+            color: #0056b3;
         }
         .section {
             margin-bottom: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
         }
         .section h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #0077ff;
             margin-bottom: 15px;
+            text-align: center;
         }
         .section p {
             font-size: 1rem;
             margin-bottom: 10px;
+            text-align: justify;
         }
         .section ul {
             list-style-type: disc;
@@ -87,11 +96,13 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
         }
         .section table th,
         .section table td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 12px;
             text-align: left;
         }
         .section table th {
@@ -99,36 +110,63 @@
             color: white;
         }
         .section table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f9f9f9;
         }
         .btn, .download-button {
             display: inline-block;
             margin-top: 15px;
-            padding: 10px 15px;
-            background-color: #0077ff;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #0077ff, #00bfff);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .btn:hover, .download-button:hover {
-            background-color: #0077ff;
+            background: linear-gradient(135deg, #0056b3, #0099cc);
+            transform: scale(1.1);
         }
         .action-buttons {
             display: flex;
-            justify-content: center; /* จัดให้อยู่กึ่งกลาง */
-            gap: 15px; /* ระยะห่างระหว่างปุ่ม */
-            flex-wrap: wrap; /* ขึ้นบรรทัดใหม่หากพื้นที่ไม่พอ */
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
             margin-top: 30px;
         }
-        /* Responsive Design */
-        @media (max-width: 680px) {
-            .logo {
-                height: 40px;
-            }
+        .action-buttons a {
+            white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+        }
+        @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
+            }
+            nav ul {
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .section h2 {
+                font-size: 1.4rem;
+            }
+            .section p {
+                font-size: 0.9rem;
+            }
+            .btn, .download-button {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+            .action-buttons {
+                flex-direction: row;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
             }
             .header-container h1 {
                 font-size: 1rem;
@@ -146,14 +184,9 @@
                 font-size: 0.8rem;
                 padding: 8px 12px;
             }
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            .hero p {
-                font-size: 0.9rem;
-            }
-            nav ul {
-                justify-content: center;
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -164,7 +197,7 @@
             <img src="assets/Bitwise-BW.png" alt="โลโก้บริษัท" class="logo">
             <h1 style="font-size: 1.5rem;">e-Learning สำหรับอบรมพนักงาน</h1>
             <nav>
-                <ul>
+                <ul style="display: flex; gap: 20px;">
                     <li><a href="index.html">หน้าแรก</a></li>
                     <li><a href="course.html">หลักสูตร</a></li>
                     <li><a href="new.html">ข่าวสาร</a></li>
@@ -255,11 +288,9 @@
     <div class="footer-container">
         <p>© 2024 e-Learning สำหรับอบรมพนักงาน | <a href="#">นโยบายความเป็นส่วนตัว</a></p>
     </div>
-    <!-- โหลดไลบรารี SheetJS -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <!-- ไฟล์ JavaScript ของคุณ -->
     <script>
-        
+        // เพิ่มฟังก์ชัน JavaScript หากต้องการใช้งานเพิ่มเติม
     </script>
 </body>
 </html>
